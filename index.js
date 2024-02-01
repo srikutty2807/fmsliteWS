@@ -12,6 +12,6 @@ app.listen(process.env.PORT, () => {
   console.log("Server is running on port" + process.env.PORT);
 });
 readdirSync("./Route").map((file) =>
-    app.use("/api", require("./Route/" + file))
+    app.use(require("./Route/" + file))
 );
 module.exports = app;
