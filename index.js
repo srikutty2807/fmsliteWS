@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const { readdirSync } = require("fs");
 const Router = require("./Route/Router");
 require("dotenv").config();
 
@@ -11,5 +11,7 @@ app.listen(process.env.PORT, () => {
   });
   console.log("Server is running on port" + process.env.PORT);
 });
-app.use("/api", Router);
+readdirSync("./Route").map((file) =>
+    app.use("/api", require("./Route/" + file))
+);
 module.exports = app;

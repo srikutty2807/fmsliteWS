@@ -1,8 +1,8 @@
-const express = require("express");
+const Router = require("express");
 const axios = require("axios");
 const { Agent } = require("https");
 const data = require("../data.json");
-const router = express.Router(); 
+const router = Router()
 require("dotenv").config();
 router.post("/filterReportData", async (req, res) => {
     const { filterdata, requst } = req.body;
