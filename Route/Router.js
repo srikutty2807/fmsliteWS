@@ -4,6 +4,8 @@ const { Agent } = require("https");
 const data = require("../data.json");
 const router = Router()
 require("dotenv").config();
+const httpClient = axios.create();
+httpClient.defaults.timeout = 100000;
 router.post("/filterReportData", async (req, res) => {
     const { filterdata, requst } = req.body;
   
@@ -128,6 +130,7 @@ router.post("/filterReportData", async (req, res) => {
               "Content-Type": "application/json",
             },
             responseType: "stream",
+            
             httpsAgent: new Agent({ rejectUnauthorized: false }),
           })
           .then(function (response) {
@@ -156,12 +159,13 @@ router.post("/filterReportData", async (req, res) => {
       const url = process.env.BASE_URL + requst;
       console.log(url);
       async function reqData() {
-        await axios
+        await httpClient
           .post(url, filterdata, {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
+
             responseType: "stream",
             httpsAgent: new Agent({ rejectUnauthorized: false }),
           })
