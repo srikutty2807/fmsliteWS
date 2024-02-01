@@ -504,5 +504,40 @@ router.post("/filterReportData", async (req, res) => {
       }
       reqData();
     });
+    app.post("/menus", async (req, res) => {
+        const { filterdata, requst } = req.body;
+      
+        const url = process.env.R_B_U + requst +`?${filterdata}`
+        console.log(url);
+        async function reqData() {
+          await axios
+            .get(url, {
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              responseType: "stream",
+              httpsAgent: new Agent({ rejectUnauthorized: false }),
+            })
+            .then(function (response) {
+              let data = "";
+              response.data.on("data", (chunk) => {
+                data += chunk.toString();
+              });
+              response.data.on("end", () => {
+                const stringResponse = JSON.stringify(data);
+                if (stringResponse.match("html") || data === undefined) {
+                  res.status(400).json({
+                    message: "server response is unknown",
+                  });
+                } else {
+                  const jsonData = JSON.parse(data);
+                  res.status(200).send(jsonData);
+                }
+              });
+            });
+        }
+        reqData();
+      });
 
 module.exports = router;
