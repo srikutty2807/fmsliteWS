@@ -504,7 +504,7 @@ router.post("/filterReportData", async (req, res) => {
       }
       reqData();
     });
-    app.post("/menus", async (req, res) => {
+    router.post("/menus", async (req, res) => {
         const { filterdata, requst } = req.body;
       
         const url = process.env.R_B_U + requst +`?${filterdata}`
