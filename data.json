@@ -1,0 +1,957 @@
+[{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 239,
+        "columnPreference": [
+            {
+                "columnId": 1683,
+                "dataField": "vehicleNumber",
+                "caption": "Vehicle Number",
+                "visibleIndex": 0,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1684,
+                "dataField": "transporterId",
+                "caption": "Transporter Id",
+                "visibleIndex": 1,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1685,
+                "dataField": "transporterName",
+                "caption": "Transporter Name",
+                "visibleIndex": 2,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1686,
+                "dataField": "driverId",
+                "caption": "Network Associate ID",
+                "visibleIndex": 3,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1687,
+                "dataField": "driverName",
+                "caption": "Network Associate Name",
+                "visibleIndex": 4,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1688,
+                "dataField": "driverMobile",
+                "caption": "Network Associate Mobile",
+                "visibleIndex": 5,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1690,
+                "dataField": "deviceSerialNumber",
+                "caption": "Device Serial Number",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1689,
+                "dataField": "vehicleGroup",
+                "caption": "Vehicle Group",
+                "visibleIndex": 7,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1691,
+                "dataField": "stopStartDate",
+                "caption": "Stoppage Start Date",
+                "visibleIndex": 8,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1692,
+                "dataField": "stopEndDate",
+                "caption": "Stoppage End Date",
+                "visibleIndex": 9,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1693,
+                "dataField": "stopDuration",
+                "caption": "Stoppage Duration(HH:MM:SS)",
+                "visibleIndex": 10,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1694,
+                "dataField": "fuelStart",
+                "caption": "Start Fuel(Litres)",
+                "visibleIndex": 11,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1695,
+                "dataField": "fuelEnd",
+                "caption": "End Fuel(Litres)",
+                "visibleIndex": 12,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1696,
+                "dataField": "fuelDifference",
+                "caption": "Fuel Difference(Litres)",
+                "visibleIndex": 13,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+           
+            {
+                "columnId": 4764,
+                "dataField": "lrNumber",
+                "caption": "RPS No",
+                "visibleIndex": 15,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4768,
+                "dataField": "consignee",
+                "caption": "Consignee",
+                "visibleIndex": 16,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4767,
+                "dataField": "consigner",
+                "caption": "Consigner",
+                "visibleIndex": 17,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4759,
+                "dataField": "dispatchDate",
+                "caption": "Dispatch Date",
+                "visibleIndex": 18,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4762,
+                "dataField": "tripStatus",
+                "caption": "Trip Status",
+                "visibleIndex": 20,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4769,
+                "dataField": "fullRouteName",
+                "caption": "Route Name",
+                "visibleIndex": 21,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+},
+{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 397,
+        "columnPreference": [
+            {
+                "columnId": 4292,
+                "dataField": "lrNumber",
+                "caption": "RPS NO",
+                "visibleIndex": 1,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4285,
+                "dataField": "vehicleNumber",
+                "caption": "Vehicle Number",
+                "visibleIndex": 2,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4286,
+                "dataField": "driverId",
+                "caption": "Network Associate ID",
+                "visibleIndex": 3,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4287,
+                "dataField": "driverName",
+                "caption": "Network Associate Name",
+                "visibleIndex": 4,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4288,
+                "dataField": "consignerName",
+                "caption": "Consigner Name",
+                "visibleIndex": 5,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4289,
+                "dataField": "consigneeName",
+                "caption": "Consignee Name",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4290,
+                "dataField": "carrierName",
+                "caption": "Carrier Name",
+                "visibleIndex": 7,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4293,
+                "dataField": "invoiceNumber",
+                "caption": "Invoice Number",
+                "visibleIndex": 9,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4294,
+                "dataField": "expectedClosure",
+                "caption": "Expected Closure",
+                "visibleIndex": 10,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4295,
+                "dataField": "distance",
+                "caption": "Distance(KMS)",
+                "visibleIndex": 11,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4296,
+                "dataField": "dispatchDate",
+                "caption": "Dispatch Date",
+                "visibleIndex": 12,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4297,
+                "dataField": "eta",
+                "caption": "ETA",
+                "visibleIndex": 13,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4298,
+                "dataField": "closureDate",
+                "caption": "Closure Date",
+                "visibleIndex": 14,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4299,
+                "dataField": "closureType",
+                "caption": "Closure Type",
+                "visibleIndex": 15,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4300,
+                "dataField": "onTime",
+                "caption": "On Time",
+                "visibleIndex": 16,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4301,
+                "dataField": "onRoute",
+                "caption": "On Route",
+                "visibleIndex": 17,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4302,
+                "dataField": "speed",
+                "caption": "Speed",
+                "visibleIndex": 18,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4303,
+                "dataField": "lastLocationDatetime",
+                "caption": "Last Location Date",
+                "visibleIndex": 19,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4304,
+                "dataField": "lastLocation",
+                "caption": "Last Location",
+                "visibleIndex": 20,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4305,
+                "dataField": "batteryLevel",
+                "caption": "Battery Level",
+                "visibleIndex": 21,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4306,
+                "dataField": "nextConsignerCode",
+                "caption": "Next Consigner Code",
+                "visibleIndex": 22,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4307,
+                "dataField": "nextConsigneeCode",
+                "caption": "Next Consignee Code",
+                "visibleIndex": 23,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4308,
+                "dataField": "crossedDate",
+                "caption": "Crossed Date",
+                "visibleIndex": 24,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4309,
+                "dataField": "exitDate",
+                "caption": "Exit Date",
+                "visibleIndex": 25,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4310,
+                "dataField": "closureReason",
+                "caption": "Closure Reason",
+                "visibleIndex": 26,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4311,
+                "dataField": "nextConsignerName",
+                "caption": "Next Consigner",
+                "visibleIndex": 27,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4312,
+                "dataField": "nextConsigneeName",
+                "caption": "Next Consignee",
+                "visibleIndex": 28,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4313,
+                "dataField": "nextDispatchDate",
+                "caption": "Next Dispatch Date",
+                "visibleIndex": 29,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4314,
+                "dataField": "plannedTransitTime",
+                "caption": "Planned Transit Time",
+                "visibleIndex": 30,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4315,
+                "dataField": "returnDate",
+                "caption": "Return Date",
+                "visibleIndex": 31,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4316,
+                "dataField": "latitude",
+                "caption": "Last Location Latitude",
+                "visibleIndex": 32,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4317,
+                "dataField": "longitude",
+                "caption": "Last Location Longitude",
+                "visibleIndex": 33,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4318,
+                "dataField": "forwardDistance",
+                "caption": "Forward Distance",
+                "visibleIndex": 34,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4319,
+                "dataField": "reverseDistance",
+                "caption": "Reverse Distance",
+                "visibleIndex": 35,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4320,
+                "dataField": "isClosedByAlt",
+                "caption": "Is Closed by Alternate",
+                "visibleIndex": 36,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4321,
+                "dataField": "maxSpeed",
+                "caption": "Max Speed (KMPH)",
+                "visibleIndex": 37,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4322,
+                "dataField": "avgSpeed",
+                "caption": "Average Speed (KMPH)",
+                "visibleIndex": 38,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4323,
+                "dataField": "customerType",
+                "caption": "Customer Type",
+                "visibleIndex": 39,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4324,
+                "dataField": "isConsiderForReturn",
+                "caption": "isConsiderForReturn",
+                "visibleIndex": 40,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4329,
+                "dataField": "noOfTimesViolated",
+                "caption": "Power Disconnect",
+                "visibleIndex": 41,
+                "visible": false,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4330,
+                "dataField": "consignerOut",
+                "caption": "Consigner Out",
+                "visibleIndex": 42,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 4766,
+                "dataField": "fullRouteName",
+                "caption": "Route Name",
+                "visibleIndex": 43,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+},{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 240,
+        "columnPreference": [
+            {
+                "columnId": 1708,
+                "dataField": "vehicleNumber",
+                "caption": "Vehicle Number",
+                "visibleIndex": 1,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1698,
+                "dataField": "datetimestamp",
+                "caption": "Date Time",
+                "visibleIndex": 2,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1699,
+                "dataField": "speed",
+                "caption": "Speed(Kmph)",
+                "visibleIndex": 3,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1700,
+                "dataField": "distance",
+                "caption": "Distance(Kms)",
+                "visibleIndex": 4,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1701,
+                "dataField": "location",
+                "caption": "Location",
+                "visibleIndex": 5,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1702,
+                "dataField": "stopTime",
+                "caption": "Stopped Duration",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1704,
+                "dataField": "latitude",
+                "caption": "Latitude",
+                "visibleIndex": 7,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1705,
+                "dataField": "longitude",
+                "caption": "Longitude",
+                "visibleIndex": 8,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1706,
+                "dataField": "bLevel",
+                "caption": "Battery Level",
+                "visibleIndex": 9,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1707,
+                "dataField": "signalStrength",
+                "caption": "Signal Strength",
+                "visibleIndex": 10,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+},{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 241,
+        "columnPreference": [
+            {
+                "columnId": 1709,
+                "dataField": "vehicleNumber",
+                "caption": "Vehicle Number",
+                "visibleIndex": 0,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1710,
+                "dataField": "transporterId",
+                "caption": "Transporter Id",
+                "visibleIndex": 1,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1711,
+                "dataField": "transporterName",
+                "caption": "Transporter Name",
+                "visibleIndex": 2,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1712,
+                "dataField": "driverId",
+                "caption": "Network Associate ID",
+                "visibleIndex": 3,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1713,
+                "dataField": "driverName",
+                "caption": "Network Associate Name",
+                "visibleIndex": 4,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1714,
+                "dataField": "driverMobile",
+                "caption": "Network Associate Mobile",
+                "visibleIndex": 5,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1715,
+                "dataField": "vehicleGroup",
+                "caption": "Vehicle Group",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1716,
+                "dataField": "deviceSerialNumber",
+                "caption": "Device Serial Number",
+                "visibleIndex": 7,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1717,
+                "dataField": "datetime",
+                "caption": "Date Time",
+                "visibleIndex": 8,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1718,
+                "dataField": "speed",
+                "caption": "Speed(Kmph)",
+                "visibleIndex": 9,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1719,
+                "dataField": "location",
+                "caption": "Location",
+                "visibleIndex": 10,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+},{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 243,
+        "columnPreference": [
+            {
+                "columnId": 1736,
+                "dataField": "vehicleNumber",
+                "caption": "Vehicle Number",
+                "visibleIndex": 0,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1737,
+                "dataField": "transporterId",
+                "caption": "Transporter Id",
+                "visibleIndex": 1,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1738,
+                "dataField": "transporterName",
+                "caption": "Transporter Name",
+                "visibleIndex": 2,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1739,
+                "dataField": "driverId",
+                "caption": "Network Associate ID",
+                "visibleIndex": 3,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1740,
+                "dataField": "driverName",
+                "caption": "Network Associate Name",
+                "visibleIndex": 4,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1741,
+                "dataField": "driverMobile",
+                "caption": "Network Associate Mobile",
+                "visibleIndex": 5,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1742,
+                "dataField": "vehicleGroup",
+                "caption": "Vehicle Group",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1743,
+                "dataField": "deviceSerialNumber",
+                "caption": "Device Serial Number",
+                "visibleIndex": 7,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1744,
+                "dataField": "lastLocationDatetime",
+                "caption": "Last Location Datetime",
+                "visibleIndex": 8,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1745,
+                "dataField": "lastLocation",
+                "caption": "Last Location",
+                "visibleIndex": 9,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1746,
+                "dataField": "totalDistance",
+                "caption": "Total Distance (KMs)",
+                "visibleIndex": 10,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+},{
+    "status": true,
+    "data": {
+        "userId": 1874,
+        "menuId": 260,
+        "columnPreference": [
+            {
+                "columnId": 1888,
+                "dataField": "id",
+                "caption": "ID",
+                "visibleIndex": 1,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1889,
+                "dataField": "datetimestamp",
+                "caption": "Date Time",
+                "visibleIndex": 2,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1890,
+                "dataField": "speed",
+                "caption": "Speed",
+                "visibleIndex": 3,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1891,
+                "dataField": "distance",
+                "caption": "Distance(KMS)",
+                "visibleIndex": 4,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1892,
+                "dataField": "location",
+                "caption": "Location",
+                "visibleIndex": 5,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            },
+            {
+                "columnId": 1893,
+                "dataField": "stopTime",
+                "caption": "Stop Time",
+                "visibleIndex": 6,
+                "visible": true,
+                "groupIndex": null,
+                "sortOrder": null
+            }
+        ]
+    },
+    "message": null
+}]
