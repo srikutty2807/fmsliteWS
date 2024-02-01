@@ -159,7 +159,7 @@ router.post("/filterReportData", async (req, res) => {
       const url = process.env.BASE_URL + requst;
       console.log(url);
       async function reqData() {
-        await httpClient
+        await axios
           .post(url, filterdata, {
             headers: {
               Accept: "application/json",
