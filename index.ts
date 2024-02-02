@@ -1,9 +1,9 @@
-const express = require("express");
-const app = express();
-const { readdirSync } = require("fs");
-const Router = require("./Route/Router");
-require("dotenv").config();
+import express from "express";
 
+import { readdirSync } from "fs";
+
+require("dotenv").config();
+const app = express();
 app.use(express.json());
 app.listen(process.env.PORT, () => {
   app.get("/", async (req, res) => {
