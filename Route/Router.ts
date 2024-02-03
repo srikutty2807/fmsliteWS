@@ -46,7 +46,7 @@ router.post("/filterReportData", async (req, res) => {
 });
 router.post("/reportPrefData", async (req, res) => {
   const { filterdata, requst } = req.body;
-  var fileData = readFileSync("../data.json", { encoding: "utf-8" });
+  var fileData = readFileSync("../data.json",'utf-8');
   const data = JSON.parse(fileData);
   const url = process.env.BASE_URL + requst;
   if (filterdata.menuId === "239") {
