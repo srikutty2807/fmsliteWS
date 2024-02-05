@@ -514,11 +514,11 @@ router.post("/vehiDetails", async (req, res) => {
 router.post("/menus", async (req, res) => {
   const { filterdata, requst } = req.body;
 
-  const url = process.env.R_B_U +`${requst}?${filterdata}`;
+  const url = process.env.BASE_URL +requst
   console.log(url);
   async function reqData() {
     await axios
-      .get(url, {
+      .post(url,filterdata, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
