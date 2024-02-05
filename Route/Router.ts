@@ -1,8 +1,8 @@
 import Router, { Request, Response } from "express";
 import axios from "axios";
 import { Agent } from "https";
-import data from "../data.json";
-import { readFile, readSync, readFileSync } from "fs";
+const fs = require('fs');
+const path = require('path'); 
 import * as sql from "mssql";
 import { config } from "../utils/sql/DbConfig";
 
@@ -46,7 +46,9 @@ router.post("/filterReportData", async (req, res) => {
 });
 router.post("/reportPrefData", async (req, res) => {
   const { filterdata, requst } = req.body;
-  var fileData = readFileSync("../data.json", { encoding: "utf-8" });
+  const filePath = path.resolve(__dirname, '../data.json');
+
+  const fileData = fs.readFileSync(filePath, 'utf8');
   const data = JSON.parse(fileData);
   const url = process.env.BASE_URL + requst;
   if (filterdata.menuId === "239") {
