@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
-         "resolveJsonModule": true,
-        "strict": true,
-        "esModuleInterop": true
-    }
-}
+      "target": "ES6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./",
+      "strict": true
+    },
+    "include": ["./**/*.ts","utils/**/*.ts","Route/**/*.ts", "config.js", "Route/ApiRouter.js", "utils/constants.js", "index.js"],
+    "exclude": ["node_modules"]
+  }
+  

@@ -1,11 +1,12 @@
-import Router, { Request, Response } from "express";
-import axios from "axios";
-import { Agent } from "https";
+const  { Request, Response, Router } = require("express");
+const axios = require("axios");
+const { Agent } = require("https");
 const fs = require('fs');
 const path = require('path'); 
-import * as sql from "mssql";
-import { config } from "../utils/sql/DbConfig";
-
+const sql = require("mssql");
+const { startTunnel } = require("../utils/constants");
+var LocalStorage = require('node-localstorage').LocalStorage
+localStorage = new LocalStorage('./scratch');
 const router = Router();
 require("dotenv").config();
 
@@ -21,30 +22,15 @@ router.post("/filterReportData", async (req, res) => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        responseType: "stream",
         httpsAgent: new Agent({ rejectUnauthorized: false }),
       })
       .then(function (response) {
-        let data = "";
-        response.data.on("data", (chunk: any) => {
-          data += chunk.toString();
-        });
-        response.data.on("end", () => {
-          const stringResponse = JSON.stringify(data);
-          if (stringResponse.match("html") || data === undefined) {
-            res.status(400).json({
-              message: "server response is unknown",
-            });
-          } else {
-            const jsonData = JSON.parse(data);
-            res.status(200).send(jsonData);
-          }
-        });
-      });
+        res.status(200).send(response.data);
+      }).catch((err)=>console.log(err))
   }
-  reqData();
+  await reqData();
 });
-router.post("/reportPrefData", async (req, res) => {
+router.post("/reportPrefData", async (req,res) => {
   const { filterdata, requst } = req.body;
   const filePath = path.resolve(__dirname, '../data.json');
 
@@ -52,9 +38,9 @@ router.post("/reportPrefData", async (req, res) => {
   const data = JSON.parse(fileData);
   const url = process.env.BASE_URL + requst;
   if (filterdata.menuId === "239") {
-    reqMenu();
+   await reqMenu();
   } else {
-    reqData();
+   await reqData();
   }
   async function reqMenu() {
     return res.status(200).send(data[0].data);
@@ -72,7 +58,7 @@ router.post("/reportPrefData", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -89,7 +75,7 @@ router.post("/reportPrefData", async (req, res) => {
       });
   }
 });
-router.post("/autoCompleteData", async (req, res) => {
+router.post("/autoCompleteData", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -106,7 +92,7 @@ router.post("/autoCompleteData", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -122,13 +108,13 @@ router.post("/autoCompleteData", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/generateReports", async (req, res) => {
+router.post("/generateReports", async (req,res) => {
   const { filterdata, requst } = req.body;
   let url= process.env.R_B_U + requst + `?${filterdata}`;
 
-  console.log(`req- url: ${url}, req-${filterdata}`);
+
   async function reqData() {
     await axios
       .get(url, {
@@ -142,7 +128,7 @@ router.post("/generateReports", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -158,9 +144,9 @@ router.post("/generateReports", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/reportsGenerate", async (req, res) => {
+router.post("/reportsGenerate", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -178,7 +164,7 @@ router.post("/reportsGenerate", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -194,9 +180,9 @@ router.post("/reportsGenerate", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/vhCount", async (req, res) => {
+router.post("/vhCount", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.C_B_U + requst;
@@ -213,7 +199,7 @@ router.post("/vhCount", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -229,9 +215,9 @@ router.post("/vhCount", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/vhDetailsList", async (req, res) => {
+router.post("/vhDetailsList", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -248,7 +234,7 @@ router.post("/vhDetailsList", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -264,9 +250,55 @@ router.post("/vhDetailsList", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/todayDetails", async (req, res) => {
+router.post("/todayDetails", async (req,res) => {
+  const { filterdata, requst } = req.body;
+
+  const url = process.env.BASE_URL + requst;
+  console.log(url);
+  async function reqData() {
+    await axios
+      .post(url, filterdata, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        res.status(200).send(response.data);
+      
+      }).catch((err)=>  res.status(400).json({
+        message: `server retuned error:${err}`,
+      }))
+  }
+  await reqData();
+});
+router.post("/loginUserAuth", async (req,res) => {
+  const { filterdata, requst } = req.body;
+
+  const url = process.env.BASE_URL + requst;
+  console.log(url);
+  async function reqData() {
+    await axios
+      .post(url, filterdata, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        res.status(200).send(response.data);
+      
+      }).catch((err)=> res.status(400).json({
+        message: `server response error:${err}`,
+      }))
+  }
+  await reqData();
+});
+router.post("/proDet", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -283,7 +315,7 @@ router.post("/todayDetails", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -299,9 +331,9 @@ router.post("/todayDetails", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/loginUserAuth", async (req, res) => {
+router.post("/callOut", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -318,7 +350,7 @@ router.post("/loginUserAuth", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -334,9 +366,9 @@ router.post("/loginUserAuth", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/proDet", async (req, res) => {
+router.post("/transPorters", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -353,7 +385,7 @@ router.post("/proDet", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -369,9 +401,9 @@ router.post("/proDet", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/callOut", async (req, res) => {
+router.post("/upProf", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.BASE_URL + requst;
@@ -388,7 +420,7 @@ router.post("/callOut", async (req, res) => {
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -404,79 +436,9 @@ router.post("/callOut", async (req, res) => {
         });
       });
   }
-  reqData();
+  await reqData();
 });
-router.post("/transPorters", async (req, res) => {
-  const { filterdata, requst } = req.body;
-
-  const url = process.env.BASE_URL + requst;
-  console.log(url);
-  async function reqData() {
-    await axios
-      .post(url, filterdata, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        responseType: "stream",
-        httpsAgent: new Agent({ rejectUnauthorized: false }),
-      })
-      .then(function (response) {
-        let data = "";
-        response.data.on("data", (chunk: any) => {
-          data += chunk.toString();
-        });
-        response.data.on("end", () => {
-          const stringResponse = JSON.stringify(data);
-          if (stringResponse.match("html") || data === undefined) {
-            res.status(400).json({
-              message: "server response is unknown",
-            });
-          } else {
-            const jsonData = JSON.parse(data);
-            res.status(200).send(jsonData);
-          }
-        });
-      });
-  }
-  reqData();
-});
-router.post("/upProf", async (req, res) => {
-  const { filterdata, requst } = req.body;
-
-  const url = process.env.BASE_URL + requst;
-  console.log(url);
-  async function reqData() {
-    await axios
-      .post(url, filterdata, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        responseType: "stream",
-        httpsAgent: new Agent({ rejectUnauthorized: false }),
-      })
-      .then(function (response) {
-        let data = "";
-        response.data.on("data", (chunk: any) => {
-          data += chunk.toString();
-        });
-        response.data.on("end", () => {
-          const stringResponse = JSON.stringify(data);
-          if (stringResponse.match("html") || data === undefined) {
-            res.status(400).json({
-              message: "server response is unknown",
-            });
-          } else {
-            const jsonData = JSON.parse(data);
-            res.status(200).send(jsonData);
-          }
-        });
-      });
-  }
-  reqData();
-});
-router.post("/vehiDetails", async (req, res) => {
+router.post("/vehiDetails", async (req,res) => {
   const { filterdata, requst } = req.body;
 
   const url = process.env.R_B_U + requst + `?${filterdata}`;
@@ -488,12 +450,12 @@ router.post("/vehiDetails", async (req, res) => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        responseType: "stream",
+        responseType: "stream", 
         httpsAgent: new Agent({ rejectUnauthorized: false }),
       })
       .then(function (response) {
         let data = "";
-        response.data.on("data", (chunk: any) => {
+        response.data.on("data", (chunk) => {
           data += chunk.toString();
         });
         response.data.on("end", () => {
@@ -507,46 +469,54 @@ router.post("/vehiDetails", async (req, res) => {
             res.status(200).send(jsonData);
           }
         });
-      });
+      }).catch((err)=>res.status(500).send({message:`error recieved from response: ${err}`}))
   }
-  reqData();
+  await reqData();
 });
-router.post("/menus", async (req, res) => {
+router.post("/menus", async (req,res) => {
   const { filterdata, requst } = req.body;
-
-  const url = process.env.BASE_URL +requst
-  console.log(url);
-  async function reqData() {
-    await axios
-      .post(url,filterdata, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        responseType: "stream",
-        httpsAgent: new Agent({ rejectUnauthorized: false }),
-      })
-      .then(function (response) {
-        let data = "";
-        response.data.on("data", (chunk: any) => {
-          data += chunk.toString();
-        });
-        response.data.on("end", () => {
-          const stringResponse = JSON.stringify(data);
-          if (stringResponse.match("html") || data === undefined) {
-            res.status(400).json({
-              message: "server response is unknown",
-            });
-          } else {
-            const jsonData = JSON.parse(data);
-            res.status(200).send(jsonData);
-          }
-        });
-      });
+  const filePath = path.resolve(__dirname, '../menu.json');
+   
+  const fileData = fs.readFileSync(filePath, 'utf8');
+  const data = JSON.parse(fileData);
+  if (filterdata) {
+    res.status(200).send(data)
+  }else{
+    res.status(500).send({status:false, data:"",message:"failed"})
   }
-  reqData();
+  //const url = process.env.BASE_URL +requst
+  //console.log(url);
+  // async function reqData() {
+  //   await axios
+  //     .post(url,filterdata, {
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       responseType: "stream",
+  //       httpsAgent: new Agent({ rejectUnauthorized: false }),
+  //     })
+  //     .then(function (response) {
+  //       let data = "";
+  //       response.data.on("data", (chunk) => {
+  //         data += chunk.toString();
+  //       });
+  //       response.data.on("end", () => {
+  //         const stringResponse = JSON.stringify(data);
+  //         if (stringResponse.match("html") || data === undefined) {
+  //           res.status(400).json({
+  //             message: "server response is unknown",
+  //           });
+  //         } else {
+  //           const jsonData = JSON.parse(data);
+  //           res.status(200).send(jsonData);
+  //         }
+  //       });
+  //     });
+  // }
+  // await reqData();
 });
-// router.get("/trackByCreteria", async (req: Request, res: Response) => {
+// router.get("/trackByCreteria", async (req, res) => {
 //   const {
 //     vehicleId,
 //     consignerId,
@@ -556,13 +526,13 @@ router.post("/menus", async (req, res) => {
 //     lrNumber,
 //     invoiceNumber,
 //     material,
-//     status,
+//     status
 //   } = req.query;
 //   let whereStat;
-//   const closureFromDate = req.query.closureFromDate as string | "";
-//   const closureToDate = req.query.closureToDate as string | "";
-//   const dispatchFromDate = req.query.dispatchFromDate as string | "";
-//   const dispatchToDate = req.query.dispatchToDate as string | "";
+//   const closureFromDate = req.query.closureFromDate 
+//   const closureToDate = req.query.closureToDate 
+//   const dispatchFromDate = req.query.dispatchFromDate
+//   const dispatchToDate = req.query.dispatchToDate
 
 //   if (closureFromDate != "") {
 //     if (closureToDate != "") {
@@ -656,15 +626,20 @@ router.post("/menus", async (req, res) => {
 //   }
 //   try {
 //     //whereStat = "cm.pod_Date between ${closureFromDate} and ${closureToDate}";
-//     sql
-//       .connect(config)
+//     const fconfig = {
+//       user: process.env.DB_USER,
+//       server: process.env.DB_SERVER || "localhost",
+//       database: process.env.DB_DATABASE,
+//       password: process.env.DB_PASSWORD,
+//       options: {
+//         encrypt: false,
+//       },
+//     };
+//    await sql.connect(fconfig)
 //       .then(async () => {
 //         console.log("connected to sql");
 //       })
 //       .catch((err) => console.error("Error connecting to sql", err));
-//     const page = 1;
-//     const pageSize = 100;
-//     const offset = (page - 1) * pageSize;
 //     const query = `SELECT
 //           cm.consignment_id,
 //            cm.ADDITIONAL_INFO.value('(additionalInfo/lrNumber)[1]', 
@@ -715,11 +690,12 @@ router.post("/menus", async (req, res) => {
 //               JOIN CmsDb.dbo.carrier_master ca WITH (NOLOCK) ON ca.CARRIER_ID = cm.CARRIER_ID
 //               JOIN trakounifieddb.dbo.LastLocations ll ON ll.iVehicle = cm.VEHICLE_ID
 //             WHERE
-//               ${whereStat} OFFSET ${offset} ROWS FETCH NEXT ${pageSize} ROWS ONLY`;
+//               ${whereStat}`;
 
 //     const request = new sql.Request();
 //     const result = await request.query(query);
 //     const rows = result.recordset;
+//     console.log(rows)
 //     if (rows.length > -1) {
 //       res.status(200).json({ status: true, data: rows, message: "success" });
 //     } else {
@@ -732,5 +708,211 @@ router.post("/menus", async (req, res) => {
 //     res.status(500).json({ error: `Internal Server Error: ${error}` });
 //   }
 // });
+router.post("/newGetMenus",async (req,res) => {
+  const {filterdata,requst} = req.body
+  
+  const url = process.env.R_B_U + requst +`?${filterdata}`;
+  console.log(url)
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        responseType: "stream",
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        let data = "";
+        response.data.on("data", (chunk) => {
+          data += chunk.toString();
+        });
+        response.data.on("end", () => {
+          const stringResponse = JSON.stringify(data);
+          if (stringResponse.match("html") || data === undefined) {
+            res.status(400).json({
+              message: "server response is unknown",
+            });
+          } else {
+            const jsonData = JSON.parse(data);
+            console.log(jsonData)
+            res.status(200).send(jsonData);
+          }
+        });
+      });
+  }
+  await reqData();
+})
+router.get("/newFilterData", async (req,res) => {
+  //const { filterdata, requst } = req.body;
+
+  const url = process.env.R_B_U + "GetLandMark"
+  console.log(url);
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        res.status(200).send(response.data);
+
+      });
+  }
+ await reqData();
+});
+router.post("/newFilterVehicle", async (req,res) => {
+  const { filterdata, requst } = req.body;
+
+  const url = process.env.R_B_U + requst +`?${filterdata}`
+  console.log(url);
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        responseType: "stream",
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        let data = "";
+        response.data.on("data", (chunk) => {
+          data += chunk.toString();
+        });
+        response.data.on("end", () => {
+          const stringResponse = JSON.stringify(data);
+          if (stringResponse.match("html") || data === undefined) {
+            res.status(400).json({
+              message: "server response is unknown",
+            });
+          } else {
+            const jsonData = JSON.parse(data);
+            res.status(200).send(jsonData);
+          }
+        });
+      });
+  }
+ await reqData();
+});
+router.get("/getConsigner", async (req,res) => {
+  //const { filterdata, requst } = req.body;
+
+  const url = process.env.R_B_U+ "GetConsigner"
+  console.log(url);
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        res.status(200).send(response.data);
+     
+      }).catch(error=>console.log(error))
+  }
+ await reqData();
+});
+router.get("/getConsignee", async (req,res) => {
+  //const { filterdata, requst } = req.body;
+
+  const url = process.env.R_B_U + "GetConsignee"
+  console.log(url);
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        res.status(200).send(response.data);
+      }).catch(error=>console.log(error))
+  }
+ await reqData();
+});
+router.post("/changePass", async (req,res) => {
+  const { filterdata, requst } = req.body;
+
+  
+  const url = process.env.R_B_U + requst +`?${filterdata}`
+  console.log(url);
+  async function reqData() {
+    await axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        responseType: "stream",
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        let data = "";
+        response.data.on("data", (chunk) => {
+          data += chunk.toString();
+        });
+        response.data.on("end", () => {
+          const stringResponse = JSON.stringify(data);
+          if (stringResponse.match("html") || data === undefined) {
+            res.status(400).json({
+              message: "server response is unknown",
+            });
+          } else {
+            const jsonData = JSON.parse(data);
+            res.status(200).send(jsonData);
+          }
+        });
+      });
+  }
+  await reqData();
+});
+router.post("/checkLog", async (req,res) => {
+  const { filterdata, requst } = req.body;
+   
+  const url = process.env.BASE_URL +requst
+  console.log(url);
+  async function reqData() {
+    await axios
+      .post(url,filterdata, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        responseType: "stream",
+        httpsAgent: new Agent({ rejectUnauthorized: false }),
+      })
+      .then(function (response) {
+        let data = "";
+        response.data.on("data", (chunk) => {
+          data += chunk.toString();
+        });
+        response.data.on("end", async () => {
+          const stringResponse = JSON.stringify(data);
+          if (stringResponse.match("html") || data === undefined) {
+            res.status(400).json({
+              message: "server response is unknown",
+            });
+          } else {
+            const jsonData = JSON.parse(data);
+            console.log(jsonData)
+            localStorage.setItem(process.env.KEY_LOG,jsonData.status)
+            res.status(200).send(jsonData);
+          }
+        });
+      }).catch((err)=>res.status(500).send({message: err}))
+  }
+  await reqData();
+});
 
 module.exports = router;
