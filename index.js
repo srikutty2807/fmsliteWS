@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json())
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
-  getReqData()
+  //getReqData()
   
   // Fork workers.
   for (let i = 0; i < numCPUs; i++) {
